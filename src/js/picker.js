@@ -30,14 +30,6 @@ function onKey(bucket, target, keys, handler, stop) {
     });
 }
 
-
-/* Picker CSS */
-const _style = document.createElement('style');
-_style.textContent = `## PLACEHOLDER-CSS ##`;
-document.documentElement.firstElementChild //<head>, or <body> if there is no <head>
-    .appendChild(_style);
-
-
 class Picker {
 
     //https://stackoverflow.com/questions/24214962/whats-the-proper-way-to-document-callbacks-with-jsdoc
@@ -705,6 +697,11 @@ const flipped = true;
     static get StyleElement() {
         return _style;
     }
+
+    static get css() {
+        return `## PLACEHOLDER-CSS ##`;
+    }
+
 }
 
 
