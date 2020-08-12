@@ -148,7 +148,7 @@ gulp.task('build', function(cb) {
         .then(bundle => {
             //Build ES module..
             return bundle.generate({
-              format: 'esm',
+              format: 'cjs' // was 'esm',
             })
             .then(gen => stream2Promise(
                 file(ESPath, gen.code, { src: true })
