@@ -493,7 +493,7 @@
       EVENT_TAB_MOVE = 'focusin';
 
   function $(selector, context) {
-      return (context || document).querySelector(selector);
+      return context.querySelector(selector);
   }
 
   function stopEvent(e) {
