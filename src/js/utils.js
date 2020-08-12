@@ -42,7 +42,7 @@ function parseHTML(document, htmlString) {
     return div.firstElementChild;
 }
 
-function dragTrack(eventBucket, area, callback) {
+function dragTrack(window, eventBucket, area, callback) {
     var dragging = false;
 
     function clamp(val, min, max) {

@@ -423,14 +423,14 @@ class Picker {
         /* Draggable color selection */
 
         //Select hue
-        utils.dragTrack(events, this._domH,  (x, y) => that._setHSLA(x));
+        utils.dragTrack(this.settings.window, events, this._domH,  (x, y) => that._setHSLA(x));
 
         //Select saturation/lightness
-        utils.dragTrack(events, this._domSL, (x, y) => that._setHSLA(null, x, 1 - y));
+        utils.dragTrack(this.settings.window, events, this._domSL, (x, y) => that._setHSLA(null, x, 1 - y));
 
         //Select alpha
         if(this.settings.alpha) {
-            utils.dragTrack(events, this._domA,  (x, y) => that._setHSLA(null, null, null, 1 - y));
+            utils.dragTrack(this.settings.window, events, this._domA,  (x, y) => that._setHSLA(null, null, null, 1 - y));
         }
         
         

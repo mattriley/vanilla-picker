@@ -409,7 +409,7 @@ function parseHTML(document, htmlString) {
     return div.firstElementChild;
 }
 
-function dragTrack(eventBucket, area, callback) {
+function dragTrack(window, eventBucket, area, callback) {
     var dragging = false;
 
     function clamp(val, min, max) {
@@ -777,16 +777,16 @@ var Picker = function () {
                 return e.preventDefault();
             });
 
-            dragTrack(events, this._domH, function (x, y) {
+            dragTrack(this.settings.window, events, this._domH, function (x, y) {
                 return that._setHSLA(x);
             });
 
-            dragTrack(events, this._domSL, function (x, y) {
+            dragTrack(this.settings.window, events, this._domSL, function (x, y) {
                 return that._setHSLA(null, x, 1 - y);
             });
 
             if (this.settings.alpha) {
-                dragTrack(events, this._domA, function (x, y) {
+                dragTrack(this.settings.window, events, this._domA, function (x, y) {
                     return that._setHSLA(null, null, null, 1 - y);
                 });
             }
