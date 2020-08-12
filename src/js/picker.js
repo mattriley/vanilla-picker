@@ -350,7 +350,7 @@ class Picker {
         }
 
         const html = this.settings.template || `## PLACEHOLDER-HTML ##`;
-        const wrapper = utils.parseHTML(html);
+        const wrapper = utils.parseHTML(this.settings.window.document, html);
         
         this.domElement = wrapper;
         this._domH      = $('.picker_hue', wrapper);

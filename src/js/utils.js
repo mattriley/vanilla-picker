@@ -35,7 +35,7 @@ class EventBucket {
     }
 }
 
-function parseHTML(htmlString) {
+function parseHTML(document, htmlString) {
     //https://stackoverflow.com/questions/494143/creating-a-new-dom-element-from-an-html-string-using-built-in-dom-methods-or-pro
     const div = document.createElement('div');
     div.innerHTML = htmlString;

@@ -402,7 +402,7 @@ var EventBucket = function () {
     return EventBucket;
 }();
 
-function parseHTML(htmlString) {
+function parseHTML(document, htmlString) {
 
     var div = document.createElement('div');
     div.innerHTML = htmlString;
@@ -711,7 +711,7 @@ var Picker = function () {
             }
 
             var html = this.settings.template || '<div class="picker_wrapper" tabindex="-1"><div class="picker_arrow"></div><div class="picker_hue picker_slider"><div class="picker_selector"></div></div><div class="picker_sl"><div class="picker_selector"></div></div><div class="picker_alpha picker_slider"><div class="picker_selector"></div></div><div class="picker_editor"><input aria-label="Type a color name or hex value"/></div><div class="picker_sample"></div><div class="picker_done"><button>Ok</button></div><div class="picker_cancel"><button>Cancel</button></div></div>';
-            var wrapper = parseHTML(html);
+            var wrapper = parseHTML(this.settings.window.document, html);
 
             this.domElement = wrapper;
             this._domH = $('.picker_hue', wrapper);
