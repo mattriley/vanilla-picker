@@ -141,49 +141,45 @@ class Picker {
             }
         }
 
-        if(options instanceof HTMLElement) {
-            settings.parent = options;
-        }
-        else {
-            //const skipKeys = [];
-            //
-            //if(options.popup instanceof Object) {
-            //    transfer(options.popup, settings.popup);
-            //    skipKeys.push('popup');
-            //}
-            
-            /* //TODO: options.layout -> Object
-            {
-                mode: 'hsla',       //'hsla', 'hasl', 'hsl'. Deprecate options.alpha
-                verticalHue: false,
-                verticalAlpha: true,
-                alphaOnSL: false,
-                editor: true,       //Deprecate options.editor
-                css: undefined,     //Same as old options.layout. Default from mode
-                //.template as well?
-            }
-            //*/
-            
-            //New parent?
-            if(settings.parent && options.parent && (settings.parent !== options.parent)) {
-                this._events.remove(settings.parent); //.removeEventListener('click', this._openProxy, false);
-                this._popupInited = false;
-            }
 
-            transfer(options, settings/*, skipKeys*/);
+        //const skipKeys = [];
+        //
+        //if(options.popup instanceof Object) {
+        //    transfer(options.popup, settings.popup);
+        //    skipKeys.push('popup');
+        //}
         
-            //Event callbacks. Hook these up before setColor() below,
-            //because we'll need to fire onChange() if there is a color in the options
-            if(options.onChange) { this.onChange = options.onChange; }
-            if(options.onDone)   { this.onDone   = options.onDone; }
-            if(options.onOpen)   { this.onOpen   = options.onOpen; }
-            if(options.onClose)  { this.onClose  = options.onClose; }
-        
-            //Note: Look for color in 'options', as a color value in 'settings' may be an old one we don't want to revert to.
-            const col = options.color || options.colour;
-            if(col) { this._setColor(col); }
+        /* //TODO: options.layout -> Object
+        {
+            mode: 'hsla',       //'hsla', 'hasl', 'hsl'. Deprecate options.alpha
+            verticalHue: false,
+            verticalAlpha: true,
+            alphaOnSL: false,
+            editor: true,       //Deprecate options.editor
+            css: undefined,     //Same as old options.layout. Default from mode
+            //.template as well?
         }
+        //*/
         
+        //New parent?
+        if(settings.parent && options.parent && (settings.parent !== options.parent)) {
+            this._events.remove(settings.parent); //.removeEventListener('click', this._openProxy, false);
+            this._popupInited = false;
+        }
+
+        transfer(options, settings/*, skipKeys*/);
+    
+        //Event callbacks. Hook these up before setColor() below,
+        //because we'll need to fire onChange() if there is a color in the options
+        if(options.onChange) { this.onChange = options.onChange; }
+        if(options.onDone)   { this.onDone   = options.onDone; }
+        if(options.onOpen)   { this.onOpen   = options.onOpen; }
+        if(options.onClose)  { this.onClose  = options.onClose; }
+    
+        //Note: Look for color in 'options', as a color value in 'settings' may be an old one we don't want to revert to.
+        const col = options.color || options.colour;
+        if(col) { this._setColor(col); }
+    
         //Init popup behavior once we have all the parts we need:
         const parent = settings.parent;
         if(parent && settings.popup && !this._popupInited) {

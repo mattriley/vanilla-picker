@@ -561,34 +561,29 @@
                   }
               }
 
-              if (options instanceof HTMLElement) {
-                  settings.parent = options;
-              } else {
+              if (settings.parent && options.parent && settings.parent !== options.parent) {
+                  this._events.remove(settings.parent);
+                  this._popupInited = false;
+              }
 
-                  if (settings.parent && options.parent && settings.parent !== options.parent) {
-                      this._events.remove(settings.parent);
-                      this._popupInited = false;
-                  }
+              transfer(options, settings);
 
-                  transfer(options, settings);
+              if (options.onChange) {
+                  this.onChange = options.onChange;
+              }
+              if (options.onDone) {
+                  this.onDone = options.onDone;
+              }
+              if (options.onOpen) {
+                  this.onOpen = options.onOpen;
+              }
+              if (options.onClose) {
+                  this.onClose = options.onClose;
+              }
 
-                  if (options.onChange) {
-                      this.onChange = options.onChange;
-                  }
-                  if (options.onDone) {
-                      this.onDone = options.onDone;
-                  }
-                  if (options.onOpen) {
-                      this.onOpen = options.onOpen;
-                  }
-                  if (options.onClose) {
-                      this.onClose = options.onClose;
-                  }
-
-                  var col = options.color || options.colour;
-                  if (col) {
-                      this._setColor(col);
-                  }
+              var col = options.color || options.colour;
+              if (col) {
+                  this._setColor(col);
               }
 
               var parent = settings.parent;
