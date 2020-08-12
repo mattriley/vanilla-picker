@@ -823,8 +823,8 @@
                       return _this2.closeHandler(e);
                   };
 
-                  addEvent(window, EVENT_CLICK_OUTSIDE, popupCloseProxy);
-                  addEvent(window, EVENT_TAB_MOVE, popupCloseProxy);
+                  addEvent(_this2.settings.window, EVENT_CLICK_OUTSIDE, popupCloseProxy);
+                  addEvent(_this2.settings.window, EVENT_TAB_MOVE, popupCloseProxy);
                   onKey(events, dom, ['Esc', 'Escape'], popupCloseProxy);
 
                   var timeKeeper = function timeKeeper(e) {
@@ -851,6 +851,8 @@
       }, {
           key: '_setPosition',
           value: function _setPosition() {
+              var _this3 = this;
+
               var parent = this.settings.parent,
                   elm = this.domElement;
 
@@ -860,7 +862,7 @@
 
               this._ifPopup(function (popup) {
 
-                  if (getComputedStyle(parent).position === 'static') {
+                  if (_this3.settings.window.getComputedStyle(parent).position === 'static') {
                       parent.style.position = 'relative';
                   }
 

@@ -460,8 +460,8 @@ class Picker {
             //Keep closeHandler() pluggable, but call it in the right context:
             const popupCloseProxy = (e) => this.closeHandler(e);
 
-            addEvent(window, EVENT_CLICK_OUTSIDE, popupCloseProxy);
-            addEvent(window, EVENT_TAB_MOVE,      popupCloseProxy);
+            addEvent(this.settings.window, EVENT_CLICK_OUTSIDE, popupCloseProxy);
+            addEvent(this.settings.window, EVENT_TAB_MOVE,      popupCloseProxy);
             onKey(events, dom, ['Esc', 'Escape'], popupCloseProxy);
 
             //Above, we added events on `window` to close the popup if the user clicks outside or tabs away from the picker.
@@ -510,7 +510,7 @@ class Picker {
         this._ifPopup((popup) => {
 
             //Allow for absolute positioning of the picker popup:
-            if(getComputedStyle(parent).position === 'static') {
+            if(this.settings.window.getComputedStyle(parent).position === 'static') {
                 parent.style.position = 'relative';
             }
 
